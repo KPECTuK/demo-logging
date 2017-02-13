@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<log4net>
+  <appender name="NetworkAppender" type="Assets.Scripts.LoggingExtensions.Appenders.NetworkAppender">
+    <param name="ConnectionString" value="10.0.2.6.:60059;" />
+    <param name="FilterType" value="Assets.Scripts.LoggingExtensions.Appenders.Filters.DefaultTitleFilter" />
+    <param name="MethodType" value="Assets.Scripts.LoggingExtensions.Appenders.Methods.UdpSendMethod" />
+    <layout type="log4net.Layout.XmlLayout" />
+  </appender>
+	<appender name="UnityEditorAppender" type="Assets.Scripts.LoggingExtensions.Appenders.UnityConsoleAppender" >
+		<layout type="Assets.Scripts.LoggingExtensions.UnityEditorPatternLayout" >
+			<conversionPattern value="&lt;color=teal>%-5timestamp&lt;/color&gt; &lt;color=%shade&gt;&lt;b&gt;[%-5level]&lt;/b&gt;&lt;/color&gt; &lt;color=#88134a&gt;&lt;i&gt;%logger&lt;/i&gt;&lt;/color&gt;:%newline %message" />
+		</layout>
+	</appender>
+  <appender name="ScreenAppender" type="Assets.Scripts.LoggingExtensions.Appenders.ScreenAppender" >
+		<layout type="Assets.Scripts.LoggingExtensions.UnityEditorPatternLayout" >
+			<conversionPattern value="%date &lt;color=%shade&gt;%-5level&lt;/color&gt; %logger %message" />
+		</layout>
+  </appender>
+  <root>
+    <level value="ALL" />
+    <appender-ref ref="NetworkAppender" />
+    <appender-ref ref="UnityEditorAppender" />
+    <appender-ref ref="ScreenAppender" />
+  </root>
+</log4net>
